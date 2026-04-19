@@ -12,10 +12,9 @@ RUN bun install --frozen-lockfile
 
 COPY . .
 
+RUN chmod +x /app/start.sh
+
 ENV PORT=8787
 EXPOSE 8787
 
-# Use a startup script to handle env var interpolation cleanly
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
 CMD ["/app/start.sh"]
